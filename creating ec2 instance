@@ -1,8 +1,19 @@
-provider "aws" {
-    region = "us-east-1"  # Set your desired AWS region
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.16"
+    }
+  }
 }
 
-resource "aws_instance" "example" {
-    ami           = "ami-0c462b53550d4fca8"  # Specify an appropriate AMI ID
-    instance_type = "t2.micro"
+# Configure the AWS Provider
+provider "aws" {
+  region = "ap-southeast-2"
 }
+
+resource "aws_instance" "Appserver" {
+    ami           = "ami-056729a8869a8ab24"  # Specify an appropriate AMI ID
+    instance_type = "t2.micro"
+  }
+

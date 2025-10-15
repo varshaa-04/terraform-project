@@ -1,0 +1,26 @@
+variable "region" {
+  description = "AWS region to deploy resources"
+  type        = string
+  default     = "us-east-1"
+}
+
+variable "instance_type" {
+  description = "Type of EC2 instance"
+  type        = string
+  default     = "t2.micro"
+}
+variable "ami_id" {
+  description = "AMI ID for EC2 instance"
+  type        = string
+  default     = "ami-0059e1f0a82a1b1c1"  # example AMI-ID
+}
+
+#-------PROVIDER BLOCK---------
+provider "aws" {
+  region = var.region
+}
+#--------RESOURCES------------
+resource "aws_instance" "Example_ec2" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+}
